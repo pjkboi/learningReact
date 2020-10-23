@@ -1,11 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+let anime = {
+  name: "Gintama",
+  character: "Gintoki"
+}
+
 ReactDOM.render(
-  React.createElement("h1", null, "Hello!"),
+  <h1>
+    {anime.character} is my favourite character from {anime.name}.
+  </h1>,
   document.getElementById('root')
 );
 
