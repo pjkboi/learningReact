@@ -3,12 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 
-function Hello () {
-  return <h1>Gintokis new component</h1>
+function Hello (props) {
+  console.log(props)
+  return <h1>Gintokis {props.number} {props.propValue}</h1>
 }
 
 ReactDOM.render(
-  <Hello></Hello>,
+  <Hello propValue="props" number={0}/>,
   document.getElementById('root')
 );
 
