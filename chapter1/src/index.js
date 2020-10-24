@@ -3,15 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 
-let anime = {
-  name: "Gintama",
-  character: "Gintoki"
+function Hello () {
+  return <h1>Gintokis new component</h1>
 }
 
 ReactDOM.render(
-  <h1>
-    {anime.character} is my favourite character from {anime.name}.
-  </h1>,
+  <Hello></Hello>,
   document.getElementById('root')
 );
 
