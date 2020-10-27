@@ -9,19 +9,36 @@ const animelist = [
   {id: 2, name: "naruto", character: "naruto"}
 ];
 
-function App ({anime}) {
-  return (<div>
-    {anime.map(anime => (
-      <div key={anime.id}>
-        <h2>{anime.name}</h2>
-        <p>MC = {anime.character}</p>
-      </div>
-    ))}
-  </div>)
+function OnGoing ({anime}){
+  return (
+    <div>
+      <h2>{anime}</h2>
+    </div>
+  )
+}
+
+function Finished ({anime}){
+  return (
+    <div>
+      <h2>{anime}</h2>
+    </div>
+  )
+}
+
+function App (props) {
+  if(props.anime === "finished"){
+    return <Finished anime="naruto"/>
+  }
+  else if(props.anime === "ongoing"){
+    return <OnGoing anime="one piece"/>
+  }
+  return (
+    <h1>ERROR</h1>
+  )
 }
 
 ReactDOM.render(
-  <App anime={animelist}/>,
+  <App anime="ongoing"/>,
   document.getElementById('root')
 );
 
