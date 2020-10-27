@@ -3,19 +3,25 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 
-function Lake ({name}){
-  return <h1>{name}</h1>
-}
+const animelist = [
+  {id: 0, name: "one piece", character: "Luffy"},
+  {id: 1, name: "one punch man", character: "Saitama"},
+  {id: 2, name: "naruto", character: "naruto"}
+];
 
-function App () {
+function App ({anime}) {
   return (<div>
-    <Lake name="Lake Eeriee" />
-    <Lake name="Lake Erie" />
+    {anime.map(anime => (
+      <div>
+        <h2>{anime.name}</h2>
+        <p>MC = {anime.character}</p>
+      </div>
+    ))}
   </div>)
 }
 
 ReactDOM.render(
-  <App propValue="props" number={0}/>,
+  <App anime={animelist}/>,
   document.getElementById('root')
 );
 
