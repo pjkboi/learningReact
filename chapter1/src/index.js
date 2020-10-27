@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
@@ -25,14 +25,18 @@ function Finished ({anime}){
   )
 }
 
-function App (props) {
-  const [status, setStatus] = useState("Open");
+function App () {
+  const [status, setStatus] = useState(false);
+
+  useEffect (()=>{
+    alert("checked " + status.toString()); 
+  });
+
   return(
-    <div>
-      <h1>Status {status}</h1>
-      <button onClick={() => setStatus("Open")}>Open</button>
-      <button onClick={() => setStatus("Close")}>Close</button>
-    </div>
+    <>
+      <input type="checkbox" value={status} onChange={() => setStatus(status => !status)}></input>
+      {status ? "checked" :  "not checked"}
+    </>
   )
 }
 
