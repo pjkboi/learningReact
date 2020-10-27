@@ -26,19 +26,21 @@ function Finished ({anime}){
 }
 
 function App (props) {
-  if(props.anime === "finished"){
-    return <Finished anime="naruto"/>
-  }
-  else if(props.anime === "ongoing"){
-    return <OnGoing anime="one piece"/>
-  }
-  return (
-    <h1>ERROR</h1>
-  )
+ return(
+   <div>
+     {props.anime === "ongoing" ? (
+      <OnGoing anime="one piece" />
+     ) : props.anime === "finished" ?(
+      <Finished anime = "naruto"/> 
+     ): (
+      <h1>ERROR</h1>
+     )}
+   </div>
+ )
 }
 
 ReactDOM.render(
-  <App anime="ongoing"/>,
+  <App anime="finished"/>,
   document.getElementById('root')
 );
 
