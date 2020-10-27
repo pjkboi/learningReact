@@ -3,13 +3,19 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 
-function Hello (props) {
-  console.log(props)
-  return <h1>Gintokis {props.number} {props.propValue}</h1>
+function Lake ({name}){
+  return <h1>{name}</h1>
+}
+
+function App () {
+  return (<div>
+    <Lake name="Lake Eeriee" />
+    <Lake name="Lake Erie" />
+  </div>)
 }
 
 ReactDOM.render(
-  <Hello propValue="props" number={0}/>,
+  <App propValue="props" number={0}/>,
   document.getElementById('root')
 );
 
