@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
@@ -26,21 +26,18 @@ function Finished ({anime}){
 }
 
 function App (props) {
- return(
-   <div>
-     {props.anime === "ongoing" ? (
-      <OnGoing anime="one piece" />
-     ) : props.anime === "finished" ?(
-      <Finished anime = "naruto"/> 
-     ): (
-      <h1>ERROR</h1>
-     )}
-   </div>
- )
+  const [status, setStatus] = useState("Open");
+  return(
+    <div>
+      <h1>Status {status}</h1>
+      <button onClick={() => setStatus("Open")}>Open</button>
+      <button onClick={() => setStatus("Close")}>Close</button>
+    </div>
+  )
 }
 
 ReactDOM.render(
-  <App anime="finished"/>,
+  <App />,
   document.getElementById('root')
 );
 
