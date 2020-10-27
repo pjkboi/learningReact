@@ -12,7 +12,7 @@ const animelist = [
 function App ({anime}) {
   return (<div>
     {anime.map(anime => (
-      <div>
+      <div key={anime.id}>
         <h2>{anime.name}</h2>
         <p>MC = {anime.character}</p>
       </div>
