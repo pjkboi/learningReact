@@ -3,39 +3,31 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 
-const animelist = [
-  {id: 0, name: "one piece", character: "Luffy"},
-  {id: 1, name: "one punch man", character: "Saitama"},
-  {id: 2, name: "naruto", character: "naruto"}
-];
-
-function OnGoing ({anime}){
-  return (
-    <div>
-      <h2>{anime}</h2>
-    </div>
-  )
-}
-
-function Finished ({anime}){
-  return (
-    <div>
-      <h2>{anime}</h2>
-    </div>
-  )
-}
 
 function App () {
-  const [status, setStatus] = useState(false);
+  const [val, setVal] = useState("");
+  const [val2, setVal2] = useState("");
 
-  useEffect (()=>{
-    alert("checked " + status.toString()); 
-  });
+  useEffect(() => {
+    console.log("1st " + val);
+  }, [val]);
+
+  useEffect(() => {
+    console.log("2nd " + val2);
+  }, [val2]);
 
   return(
     <>
-      <input type="checkbox" value={status} onChange={() => setStatus(status => !status)}></input>
-      {status ? "checked" :  "not checked"}
+      <label>
+        Favourite Movie:
+        <input value={val} onChange={e => setVal(e.target.value)} />
+      </label>
+      <br />
+      <label>
+        Second Favourite Movie:
+        <input value={val2} onChange={e => setVal2(e.target.value)} />
+      </label>
+
     </>
   )
 }
