@@ -3,32 +3,26 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 
-
+function GitHub ({login}){
+  const [data, setData] = useState(null);
+  useEffect(() => {
+    fetch('https://api.github.com/users/'+ login)
+    .then(res => res.json())
+    .then(setData)
+    .catch(console.error);
+  }, []);
+  if(data){
+    return (
+      <div>
+        <h1>{data.login}</h1>
+        <img src={data.avatar_url} />
+      </div>);
+  }
+  return null;
+}
 function App () {
-  const [val, setVal] = useState("");
-  const [val2, setVal2] = useState("");
-
-  useEffect(() => {
-    console.log("1st " + val);
-  }, [val]);
-
-  useEffect(() => {
-    console.log("2nd " + val2);
-  }, [val2]);
-
-  return(
-    <>
-      <label>
-        Favourite Movie:
-        <input value={val} onChange={e => setVal(e.target.value)} />
-      </label>
-      <br />
-      <label>
-        Second Favourite Movie:
-        <input value={val2} onChange={e => setVal2(e.target.value)} />
-      </label>
-
-    </>
+  return (
+    <GitHub login="pjkboi"/>
   )
 }
 
